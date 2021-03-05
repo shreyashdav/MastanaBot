@@ -1,0 +1,10 @@
+Hi there !
+I am currently under development, I will soon become a bot with many more cool games for fun.
+My prefix is $
+You change it using command: changeprefix <new_prefix> 
+
+1. Jokes :clown:
+joke - To get random jokes
+
+2. Inspiration Quotes :mage:
+inspire - To get random inspirational quotes
