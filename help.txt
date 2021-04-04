@@ -1,10 +1,27 @@
-Hi there !
-I am currently under development, I will soon become a bot with many more cool games for fun.
-My prefix is $
-You change it using command: changeprefix <new_prefix> 
+```
+Welcome to Mastana Help.
+My default prefix is $
+You can change it using command: changeprefix <new_prefix> 
 
-1. Jokes :clown:
+Here are the list of commands:
+1. Actions
+pat, cuddle, hug, kiss, slap, kill, nom, bite, lick, bully, bonk
+
+2. Jokes 
 joke - To get random jokes
 
-2. Inspiration Quotes :mage:
+3. Inspiration Quotes
 inspire - To get random inspirational quotes
+
+4. Topics
+topic - To get random interesting topics
+
+5. Trivia 
+tf - To get true/false trivia questions
+
+6. Magic 8 ball fortune teller
+8ball - Ask your fortune
+
+7. AFK
+afk - Set your AFK
+```
