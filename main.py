@@ -73,7 +73,7 @@ def get_joke():
   return(setup+"\n"+"Ans - "+ punchline)
 
 def get_action(action):
-  response = requests.get("https://waifu.pics/api/sfw/"+action)
+  response = requests.get("https://api.waifu.pics/sfw/"+action)
   json_data = json.loads(response.text)
   action_url = json_data['url']
   return(action_url)
@@ -201,7 +201,7 @@ async def on_message(message):
     # conditions are met:
     def check(msg):
         return msg.author == message.author and msg.channel == message.channel and \
-        msg.content.lower() in ["true", "t", "yes", "y", "haan", "ha","haa", "yea", "yep", "yeah", "yo", "nope", "na","naah", "naa", "false", "f", "nai", "nahi", "no", "n"]
+        msg.content.lower() in ["true", "t", "yes", "y", "haan", "ha","haa", "yea", "yep", "yeah", "yo", "nope", "na", "nu", "nuu", "nah", "naah", "naa", "false", "f", "nai", "nahi", "no", "n"]
     try:
       msg = await client.wait_for("message", check=check, timeout=15) # 30 seconds to reply
     except asyncio.TimeoutError:
@@ -212,7 +212,7 @@ async def on_message(message):
         await message.channel.send("Yay! You got that right")
       else:
         await message.channel.send("Oops, It's wrong. Correct answer is False")
-    elif msg.content.lower() in ["nope", "na","naah", "naa", "false", "f", "nai", "nahi", "no", "n"]:
+    elif msg.content.lower() in ["nope", "na", "nu", "nuu", "nah", "naah", "naa", "false", "f", "nai", "nahi", "no", "n"]:
       if tf["answer"] == "False":
         await message.channel.send("Yay! You got that right")
       else:
@@ -221,7 +221,7 @@ async def on_message(message):
       await message.channel.send("Please give valid answer")
 
   if message.content.lower().startswith(prefix+'afk'):
-    content = str(message.content).split(prefix,1)
+    content = str(message.content).lower().split(prefix,1)
     if len(str(content[1]).split(" "))==1:
       msg = "AFK"
     else:
@@ -248,7 +248,7 @@ async def on_message(message):
     await message.channel.send(file)
 
   if message.content.lower().startswith(prefix+'8ball'):
-    msg_w_prefix = str(message.content).split(prefix,1)
+    msg_w_prefix = str(message.content).lower().split(prefix,1)
     msg_list = str(msg_w_prefix[1]).split(" ")
     if len(msg_list) < 2:
       await message.channel.send("You forgot to ask your question")
@@ -256,6 +256,11 @@ async def on_message(message):
       msg = random.choice(eight_ball)
       await message.channel.send(msg)
   
+  if message.content.lower().startswith(prefix+'say'):
+    msg = str(message.content).lower().split(prefix+'say',1)[1]
+    await message.delete()
+    await message.channel.send(msg)
+
   if message.content.lower().startswith(prefix+'pat'):
     if len(message.mentions) == 0:
       await message.channel.send("Please mention at least 1 user")
@@ -398,9 +403,162 @@ async def on_message(message):
             )
       embed.set_image(url=action)
       await message.channel.send(embed=embed)
+    
+  if message.content.lower().startswith(prefix+'poke'):
+    if len(message.mentions) == 0:
+      await message.channel.send("Please mention at least 1 user")
+    else:
+      action = get_action('poke')
+      list_mem = [x.name for x in message.mentions]
+      embed = discord.Embed(
+                title=str(message.author.name)+" pokes "+str(', '.join(map(str, list_mem)) ),
+                color=discord.Colour.gold()
+            )
+      embed.set_image(url=action)
+      await message.channel.send(embed=embed)
 
+  if message.content.lower().startswith(prefix+'yeet'):
+    if len(message.mentions) == 0:
+      await message.channel.send("Please mention at least 1 user")
+    else:
+      action = get_action('yeet')
+      list_mem = [x.name for x in message.mentions]
+      embed = discord.Embed(
+                title=str(message.author.name)+" yeets "+str(', '.join(map(str, list_mem)) ),
+                color=discord.Colour.gold()
+            )
+      embed.set_image(url=action)
+      await message.channel.send(embed=embed)
+  
+  if message.content.lower().startswith(prefix+'handhold'):
+    if len(message.mentions) == 0:
+      await message.channel.send("Please mention at least 1 user")
+    else:
+      action = get_action('handhold')
+      list_mem = [x.name for x in message.mentions]
+      embed = discord.Embed(
+                title=str(message.author.name)+" handholds "+str(', '.join(map(str, list_mem)) ),
+                color=discord.Colour.gold()
+            )
+      embed.set_image(url=action)
+      await message.channel.send(embed=embed)
 
+  if message.content.lower().startswith(prefix+'highfive'):
+    if len(message.mentions) == 0:
+      await message.channel.send("Please mention at least 1 user")
+    else:
+      action = get_action('highfive')
+      list_mem = [x.name for x in message.mentions]
+      embed = discord.Embed(
+                title=str(message.author.name)+" highfives "+str(', '.join(map(str, list_mem)) ),
+                color=discord.Colour.gold()
+            )
+      embed.set_image(url=action)
+      await message.channel.send(embed=embed)
 
+  if message.content.lower().startswith(prefix+'glomp'):
+    if len(message.mentions) == 0:
+      await message.channel.send("Please mention at least 1 user")
+    else:
+      action = get_action('glomp')
+      list_mem = [x.name for x in message.mentions]
+      embed = discord.Embed(
+                title=str(message.author.name)+" glomps "+str(', '.join(map(str, list_mem)) ),
+                color=discord.Colour.gold()
+            )
+      embed.set_image(url=action)
+      await message.channel.send(embed=embed)
+  
+  # Adding reactions
+  if message.content.lower().startswith(prefix+'cry'):
+      action = get_action('cry')
+      embed = discord.Embed(
+                title=str(message.author.name)+" is crying hard",
+                color=discord.Colour.gold()
+            )
+      embed.set_image(url=action)
+      await message.channel.send(embed=embed)
+
+  if message.content.lower().startswith(prefix+'awoo'):
+      action = get_action('awoo')
+      embed = discord.Embed(
+                title=str(message.author.name)+" is doing awoo",
+                color=discord.Colour.gold()
+            )
+      embed.set_image(url=action)
+      await message.channel.send(embed=embed)
+
+  if message.content.lower().startswith(prefix+'smug'):
+      action = get_action('smug')
+      embed = discord.Embed(
+                title=str(message.author.name)+" is giving smug reaction",
+                color=discord.Colour.gold()
+            )
+      embed.set_image(url=action)
+      await message.channel.send(embed=embed)
+
+  if message.content.lower().startswith(prefix+'blush'):
+      action = get_action('blush')
+      embed = discord.Embed(
+                title=str(message.author.name)+" is blushing",
+                color=discord.Colour.gold()
+            )
+      embed.set_image(url=action)
+      await message.channel.send(embed=embed)
+
+  if message.content.lower().startswith(prefix+'smile'):
+      action = get_action('smile')
+      embed = discord.Embed(
+                title=str(message.author.name)+" is smiling",
+                color=discord.Colour.gold()
+            )
+      embed.set_image(url=action)
+      await message.channel.send(embed=embed)
+
+  if message.content.lower().startswith(prefix+'wave'):
+      action = get_action('wave')
+      embed = discord.Embed(
+                title=str(message.author.name)+" is waving",
+                color=discord.Colour.gold()
+            )
+      embed.set_image(url=action)
+      await message.channel.send(embed=embed)
+
+  if message.content.lower().startswith(prefix+'happy'):
+      action = get_action('happy')
+      embed = discord.Embed(
+                title=str(message.author.name)+" is happy today",
+                color=discord.Colour.gold()
+            )
+      embed.set_image(url=action)
+      await message.channel.send(embed=embed)
+
+  if message.content.lower().startswith(prefix+'wink'):
+      action = get_action('wink')
+      embed = discord.Embed(
+                title=str(message.author.name)+" winks",
+                color=discord.Colour.gold()
+            )
+      embed.set_image(url=action)
+      await message.channel.send(embed=embed)
+
+  if message.content.lower().startswith(prefix+'dance'):
+      action = get_action('dance')
+      embed = discord.Embed(
+                title=str(message.author.name)+" is dancing",
+                color=discord.Colour.gold()
+            )
+      embed.set_image(url=action)
+      await message.channel.send(embed=embed)
+
+  if message.content.lower().startswith(prefix+'cringe'):
+      action = get_action('cringe')
+      embed = discord.Embed(
+                title=str(message.author.name)+" giving cringe reaction",
+                color=discord.Colour.gold()
+            )
+      embed.set_image(url=action)
+      await message.channel.send(embed=embed)
 
 keep_alive()
 client.run(os.getenv('TOKEN'))

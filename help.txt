@@ -5,23 +5,29 @@ You can change it using command: changeprefix <new_prefix>
 
 Here are the list of commands:
 1. Actions
-pat, cuddle, hug, kiss, slap, kill, nom, bite, lick, bully, bonk
+pat, cuddle, hug, kiss, slap, kill, nom, bite, lick, bully, bonk, yeet, handhold, highfive, poke, glomp
 
-2. Jokes 
+2. Reactions
+cry, awoo, smug, blush, smile, wave, happy, wink, dance, cringe
+
+3. Make me say something
+say
+
+4. Jokes 
 joke - To get random jokes
 
-3. Inspiration Quotes
+5. Inspiration Quotes
 inspire - To get random inspirational quotes
 
-4. Topics
+6. Topics
 topic - To get random interesting topics
 
-5. Trivia 
+7. Trivia 
 tf - To get true/false trivia questions
 
-6. Magic 8 ball fortune teller
+8. Magic 8 ball fortune teller
 8ball - Ask your fortune
 
-7. AFK
+9. AFK
 afk - Set your AFK
 ```
