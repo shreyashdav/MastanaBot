@@ -104,15 +104,18 @@ async def on_guild_remove(guild):
 
 @client.command()
 async def changeprefix(ctx, prefix):
-  with open('prefixes.json', 'r') as f:
-    prefixes = json.load(f)
-  
-  prefixes[str(ctx.guild.id)] = prefix
+  if ctx.message.author.guild_permissions.administrator:
+    with open('prefixes.json', 'r') as f:
+      prefixes = json.load(f)
+    
+    prefixes[str(ctx.guild.id)] = prefix
 
-  with open('prefixes.json', 'w') as f:
-    json.dump(prefixes, f, indent=4)
-  
-  await ctx.send(f'Prefix changed to {prefix}')
+    with open('prefixes.json', 'w') as f:
+      json.dump(prefixes, f, indent=4)
+    
+    await ctx.send(f'Prefix changed to {prefix}')
+  else:
+    await ctx.send(f"Only admin can change the prefix")
 
 @client.event
 async def on_message(message):
@@ -120,7 +123,10 @@ async def on_message(message):
 
   with open('prefixes.json', 'r') as f:
     prefixes = json.load(f)
-  prefix = str(prefixes[str(message.guild.id)]).lower()
+  if str(prefixes[str(message.guild.id)]).isalpha():
+    prefix = str(prefixes[str(message.guild.id)]).lower()
+  else:
+    prefix = str(prefixes[str(message.guild.id)])
   
   with open('afk.json', 'r') as f:
     afkdict = json.load(f)

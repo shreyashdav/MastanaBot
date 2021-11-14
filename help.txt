@@ -11,7 +11,7 @@ pat, cuddle, hug, kiss, slap, kill, nom, bite, lick, bully, bonk, yeet, handhold
 cry, awoo, smug, blush, smile, wave, happy, wink, dance, cringe
 
 3. Make me say something
-say
+say <anything you want me to say> eg "say hello"
 
 4. Jokes 
 joke - To get random jokes
