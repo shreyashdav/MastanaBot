@@ -72,6 +72,18 @@ def get_joke():
   punchline = json_data['punchline']
   return(setup+"\n"+"Ans - "+ punchline)
 
+def get_meme():
+  response = requests.get("https://meme-api.herokuapp.com/gimme")
+  json_data = json.loads(response.text)
+  url = json_data['url']
+  title = json_data['title']
+  embed = discord.Embed(
+                title=str(title),
+                color=discord.Colour.gold()
+            )
+  embed.set_image(url=url)
+  return embed
+
 def get_action(action):
   response = requests.get("https://api.waifu.pics/sfw/"+action)
   json_data = json.loads(response.text)
@@ -187,6 +199,10 @@ async def on_message(message):
   if message.content.lower().startswith(prefix+'topic'):
     topic = get_topic()
     await message.channel.send(topic)
+
+  if message.content.lower().startswith(prefix+'meme'):
+    meme = get_meme()
+    await message.channel.send(embed=meme)
 
   if message.content.lower().startswith(prefix+'tf'):
     tf_list = str(message.content)[1:].split(" ")

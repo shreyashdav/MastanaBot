@@ -13,21 +13,24 @@ cry, awoo, smug, blush, smile, wave, happy, wink, dance, cringe
 3. Make me say something
 say <anything you want me to say> eg "say hello"
 
-4. Jokes 
+4. Memes
+meme - Get a random reddit meme
+
+5. Jokes 
 joke - To get random jokes
 
-5. Inspiration Quotes
+6. Inspiration Quotes
 inspire - To get random inspirational quotes
 
-6. Topics
+7. Topics
 topic - To get random interesting topics
 
-7. Trivia 
+8. Trivia 
 tf - To get true/false trivia questions
 
-8. Magic 8 ball fortune teller
+9. Magic 8 ball fortune teller
 8ball - Ask your fortune
 
-9. AFK
+10. AFK
 afk - Set your AFK
 ```
