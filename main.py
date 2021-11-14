@@ -66,11 +66,15 @@ def get_topic():
     return topic
 
 def get_joke():
-  response = requests.get("https://official-joke-api.appspot.com/jokes/random")
+  response = requests.get("https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,racist,sexist,explicit")
   json_data = json.loads(response.text)
-  setup = json_data['setup']
-  punchline = json_data['punchline']
-  return(setup+"\n"+"Ans - "+ punchline)
+  if json_data['type'] == "twopart":
+    setup = json_data['setup']
+    delivery = json_data['delivery']
+    return(setup+"\n"+"Punchline - "+ delivery)
+  else:
+    joke = json_data['joke']
+    return joke
 
 def get_meme():
   response = requests.get("https://meme-api.herokuapp.com/gimme")
