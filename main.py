@@ -7,6 +7,8 @@ from discord.ext import commands
 from dateutil import parser
 import asyncio # To get the exception
 
+# TEST 2
+
 eight_ball = [ "It is certain", "It is decidedly so", "Without any doubt", "Yes, definitely", "Have you lost your mind!",
                "You may rely on it", "As I see it, yes", "Most Likely", "Outlook Good",
                "Yes", "Signs point to yes", "Reply hazy, try again", "Ask again later","My sources say yes",
